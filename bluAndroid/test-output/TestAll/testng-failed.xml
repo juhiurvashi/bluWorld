@@ -6,18 +6,18 @@
       <class name="bluAndroid.bluAndroid.TestScripts.BluSignUpTestRunner">
         <methods>
           <include name="tc05_signupManDetails"/>
-          <include name="tc08_signupNonMatchingPassword"/>
+          <include name="tc09_signupInvalidFirstname"/>
           <include name="SetUp"/>
           <include name="getResult"/>
-          <include name="tc18_signupRegisteredMobile"/>
-          <include name="tc06_signupInvalidEmail"/>
-          <include name="tc04_signupWithoutDOBGenderAndRefferalCode"/>
-          <include name="tc16_signupWithoutMobileNumber"/>
+          <include name="tc11_signupInvalidRefferalCode"/>
+          <include name="tc17_signupRegisteredEmail"/>
           <include name="tearDown"/>
+          <include name="tc07_signupInvalidPassword"/>
           <include name="preCondition"/>
+          <include name="tc01_signup"/>
           <include name="tc12_signupWithoutEmail"/>
-          <include name="tc10_signupInvalidMobile"/>
-          <include name="tc14_signupWithoutConfirmingPass"/>
+          <include name="tc15_signupWithoutFirstName"/>
+          <include name="tc13_signupWithoutPassword"/>
         </methods>
       </class> <!-- bluAndroid.bluAndroid.TestScripts.BluSignUpTestRunner -->
     </classes>
