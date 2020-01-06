@@ -5,6 +5,7 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.maven.model.MailingList;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -18,6 +19,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 
 import bluAndroid.bluAndroid.pageObjects.LoginScreen;
 import bluAndroid.bluAndroid.pageObjects.MyDetailsScreen;
+import bluAndroid.bluAndroid.pageObjects.SignUpScreen;
 import bluAndroid.bluAndroid.util.BaseClass;
 import bluAndroid.bluAndroid.util.CommonUtil;
 import io.appium.java_client.AppiumDriver;
@@ -27,6 +29,7 @@ public class BluMyDetailsTestRunner extends BaseClass {
 	LoginScreen ls;
 	String mobileNo, password;
 	MyDetailsScreen mds;
+	SignUpScreen su;
 	@BeforeMethod
 	public void preCondition() throws IOException
 
@@ -39,6 +42,7 @@ public class BluMyDetailsTestRunner extends BaseClass {
 		ls.clickLoginLink();
 		ls.bluLogin(mobileNo, password);
 		mds=new MyDetailsScreen(driver);
+		su=new SignUpScreen(driver);
 	}
 
 	public void displayText()
@@ -100,20 +104,103 @@ public class BluMyDetailsTestRunner extends BaseClass {
 	}
 	@Test
 	public void tc03_editLastName() throws IOException {
-		System.out.println("tc01_editFirstName");
-		extentTest = extentReports.createTest("tc01_editFirstName()");
+		System.out.println("tc03_editLastName");
+		extentTest = extentReports.createTest("tc03_editLastName()");
 		mds.clickOnMyDetails();
 		mds.clickOneditIconLastName();
 		WebElement lastNameEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
 		lastNameEdit.sendKeys("Lee");
 		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
 		selectTick.click();
-		WebElement displayLastname=driver.findElement(By.id("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/last_name_profileDisplayField']//android.widget.EditText[@resource-id='sg.com.blu.android:id/input_text_et']"));
+		WebElement displayLastname=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/last_name_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
 		System.out.println(displayLastname.getText());
 		Assert.assertEquals(displayLastname.getText(), "Lee");
 		mds.clickOneditIconLastName();
 		lastNameEdit.sendKeys("Gupta");
 		selectTick.click();
+	}
+	@Test
+	public void tc04_editEmail() throws IOException {
+		System.out.println("tc04_editEmail");
+		extentTest = extentReports.createTest("tc04_editEmail()");
+		mds.clickOnMyDetails();
+		mds.clickOneditIconEmail();
+		WebElement emailEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
+		emailEdit.sendKeys("test@test.com");
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement displayEmail=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/email_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
+		System.out.println(displayEmail.getText());
+		Assert.assertEquals(displayEmail.getText(), "test@test.com");
+		mds.clickOneditIconEmail();
+		emailEdit.sendKeys("urvashi@blu.com.sg");
+		selectTick.click();
+	}
+	@Test
+	public void tc05_editEmailAlreadyExists() throws IOException {
+		System.out.println("tc05_editEmailAlreadyExists");
+		extentTest = extentReports.createTest("tc05_editEmailAlreadyExists()");
+		mds.clickOnMyDetails();
+		mds.clickOneditIconEmail();
+		WebElement emailEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
+		emailEdit.sendKeys("juhiurvashi@gmail.com");
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement displayMsg=driver.findElement(By.id("android:id/message"));
+		System.out.println(displayMsg.getText());
+		Assert.assertEquals(displayMsg.getText(), "Email address already used.");
+		driver.findElement(By.id("android:id/button1")).click();
+		WebElement displayEmail=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/email_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
+		Assert.assertEquals(displayEmail.getText(), "urvashi@blu.com.sg");
+	}
+	//@Test
+	public void tc06_editDOB() throws IOException {
+		System.out.println("tc05_editDOB");
+		extentTest = extentReports.createTest("tc05_editDOB()");
+		mds.clickOnMyDetails();
+		mds.clickOneditIconDOB();
+		WebElement dobEdit=driver.findElement(By.id("sg.com.blu.android:id/input_date_et"));
+		dobEdit.click();
+		mds.selectDOB();
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement displayDOB=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/dob_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
+		System.out.println(displayDOB.getText());
+		Assert.assertEquals(displayDOB.getText(), "Date of birth: 10 Mar 2000");
+		mds.clickOneditIconDOB();
+		dobEdit.click();
+		su.selectDOB();
+	}
+	@Test
+	public void tc07_editGender() throws IOException {
+		System.out.println("tc06_editGender");
+		extentTest = extentReports.createTest("tc06_editGender()");
+		mds.clickOnMyDetails();
+		mds.clickOneditIconGender();
+		WebElement male=driver.findElement(By.id("sg.com.blu.android:id/male_rb"));
+		WebElement female=driver.findElement(By.id("sg.com.blu.android:id/female_rb"));
+		male.click();
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement displayGender=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/gender_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
+		System.out.println(displayGender.getText());
+		Assert.assertEquals(displayGender.getText(), "Male");
+		mds.clickOneditIconGender();
+		female.click();
+		selectTick.click();
+	}
+	@Test
+	public void tc08_referAFriend() throws IOException {
+		System.out.println("tc08_referAFriend");
+		extentTest = extentReports.createTest("tc08_referAFriend()");
+		mds.clickOnMyDetails();
+		mds.referAFriend().click();
+		WebElement referAFriend=driver.findElement(By.id("sg.com.blu.android:id/title_tv"));
+		WebElement bluID=driver.findElement(By.id("sg.com.blu.android:id/promoCodeTextView"));
+		Assert.assertEquals(referAFriend.getText(), "Refer a friend");
+		Assert.assertEquals(bluID.getText(), "BLU452385");
+		WebElement shareCode=driver.findElement(By.id("sg.com.blu.android:id/sharePromoCodeButton"));
+		shareCode.click();
 	}
 	@AfterMethod
 	public void getResult(ITestResult testResult) throws IOException {
