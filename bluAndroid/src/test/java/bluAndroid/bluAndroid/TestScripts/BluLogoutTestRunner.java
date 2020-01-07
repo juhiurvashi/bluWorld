@@ -64,7 +64,7 @@ public class BluLogoutTestRunner extends BaseClass {
 	{
 		System.out.println("tc01_logout");
 		extentTest = extentReports.createTest("tc01_logout()");
-		ms.settings();
+		ms.clickOnSettings();
 		WebElement resetPassword=driver.findElement(By.id("sg.com.blu.android:id/reset_password_container"));
 		resetPassword.click();
 		WebElement currentPassword=driver.findElement(By.id("sg.com.blu.android:id/current_password_inputField"));
@@ -78,7 +78,7 @@ public class BluLogoutTestRunner extends BaseClass {
 		WebElement backToHome=driver.findElement(By.id("sg.com.blu.android:id/backToHomeButton"));
 		assertTrue(backToHome.isDisplayed());
 		backToHome.click();
-		ms.settings();
+		ms.clickOnSettings();
 		resetPassword.click();
 		currentPassword.sendKeys("Admin@12345");
 		newPassword.sendKeys("Admin@123");
@@ -103,7 +103,7 @@ public class BluLogoutTestRunner extends BaseClass {
 	{
 		System.out.println("tc01_logout");
 		extentTest = extentReports.createTest("tc01_logout()");
-		ms.settings();
+		ms.clickOnSettings();
 		WebElement deactivateAccount=driver.findElement(By.id("sg.com.blu.android:id/deactivate_account_container"));
 		List<WebElement> list=driver.findElements(By.className("android.widget.RadioGroup"));
 		deactivateAccount.click();

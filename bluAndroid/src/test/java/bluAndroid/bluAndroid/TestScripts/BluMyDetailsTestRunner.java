@@ -120,9 +120,27 @@ public class BluMyDetailsTestRunner extends BaseClass {
 		selectTick.click();
 	}
 	@Test
-	public void tc04_editEmail() throws IOException {
-		System.out.println("tc04_editEmail");
-		extentTest = extentReports.createTest("tc04_editEmail()");
+	public void tc04_unableToEditLastName() throws IOException {
+		System.out.println("tc04_unableToEditLastName");
+		extentTest = extentReports.createTest("tc04_unableToEditLastName");
+		mds.clickOnMyDetails();
+		mds.clickOneditIconLastName();
+		WebElement lastNameEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
+		lastNameEdit.sendKeys("Lee@");
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement invalidLastNameError=driver.findElement(By.id("sg.com.blu.android:id/error_tv"));
+		System.out.println(invalidLastNameError.getText());
+		Assert.assertEquals(invalidLastNameError.getText(), "Only alphabets and spaces allowed.");
+		//mds.clickOneditIconFirstName();
+		lastNameEdit.sendKeys("Gupta");
+		selectTick.click();
+		
+	}
+	@Test
+	public void tc05_editEmail() throws IOException {
+		System.out.println("tc05_editEmail");
+		extentTest = extentReports.createTest("tc05_editEmail()");
 		mds.clickOnMyDetails();
 		mds.clickOneditIconEmail();
 		WebElement emailEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
@@ -137,9 +155,9 @@ public class BluMyDetailsTestRunner extends BaseClass {
 		selectTick.click();
 	}
 	@Test
-	public void tc05_editEmailAlreadyExists() throws IOException {
-		System.out.println("tc05_editEmailAlreadyExists");
-		extentTest = extentReports.createTest("tc05_editEmailAlreadyExists()");
+	public void tc06_editEmailAlreadyExists() throws IOException {
+		System.out.println("tc06_editEmailAlreadyExists");
+		extentTest = extentReports.createTest("tc06_editEmailAlreadyExists()");
 		mds.clickOnMyDetails();
 		mds.clickOneditIconEmail();
 		WebElement emailEdit=driver.findElement(By.id("sg.com.blu.android:id/input_text_et"));
@@ -152,6 +170,24 @@ public class BluMyDetailsTestRunner extends BaseClass {
 		driver.findElement(By.id("android:id/button1")).click();
 		WebElement displayEmail=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/email_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
 		Assert.assertEquals(displayEmail.getText(), "urvashi@blu.com.sg");
+	}
+	@Test
+	public void tc07_editMobileAlreadyExists() throws IOException {
+		System.out.println("tc07_editEmailAlreadyExists");
+		extentTest = extentReports.createTest("tc07_editEmailAlreadyExists()");
+		mds.clickOnMyDetails();
+		System.out.println("");
+		mds.clickOneditIconMobile();
+		WebElement mobileEdit=driver.findElement(By.id("sg.com.blu.android:id/input_mobile_number_et"));
+		mobileEdit.sendKeys("98582028");
+		WebElement selectTick=driver.findElement(By.id("sg.com.blu.android:id/tick_btn"));
+		selectTick.click();
+		WebElement displayMsg=driver.findElement(By.id("android:id/message"));
+		System.out.println(displayMsg.getText());
+		Assert.assertEquals(displayMsg.getText(), "Mobile number already used.");
+		driver.findElement(By.id("android:id/button1")).click();
+		WebElement displayMobile=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/mobile_number_profileDisplayField']//android.widget.TextView[@resource-id='sg.com.blu.android:id/display_tv']"));
+		Assert.assertEquals(displayMobile.getText(), "94561718");
 	}
 	//@Test
 	public void tc06_editDOB() throws IOException {
@@ -173,8 +209,8 @@ public class BluMyDetailsTestRunner extends BaseClass {
 	}
 	@Test
 	public void tc07_editGender() throws IOException {
-		System.out.println("tc06_editGender");
-		extentTest = extentReports.createTest("tc06_editGender()");
+		System.out.println("tc07_editGender");
+		extentTest = extentReports.createTest("tc07_editGender()");
 		mds.clickOnMyDetails();
 		mds.clickOneditIconGender();
 		WebElement male=driver.findElement(By.id("sg.com.blu.android:id/male_rb"));

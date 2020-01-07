@@ -316,7 +316,7 @@ public class BluSignUpTestRunner extends BaseClass {
 		su.enterMobile().sendKeys(mobile);
 		((AndroidDriver) driver).pressKey(new KeyEvent(AndroidKey.ENTER));
 		su.clickSignUpBtn();
-		String expected="Enter your email address";
+		String expected="Enter your email address.";
 		WebElement otpScreenText= driver.findElement(By.id("sg.com.blu.android:id/error_tv"));
 		String actual=otpScreenText.getText();
 		Assert.assertEquals(actual, expected);

@@ -26,6 +26,11 @@ public class MyDetailsScreen {
 	public MyDetailsScreen(AppiumDriver<WebElement> driver2) throws IOException {
 		this.driver = driver2;
 	}
+	public void clickOnMenu()
+	{
+		WebElement menu=driver.findElement(By.id("sg.com.blu.android:id/menuButton"));
+		menu.click();
+	}
 	public void clickOnMyDetails()
 	{
 		WebElement menu=driver.findElement(By.id("sg.com.blu.android:id/menuButton"));
@@ -46,7 +51,7 @@ public class MyDetailsScreen {
 	}
 	public void clickOneditIconMobile()
 	{
-		WebElement MobileEditIcon=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/mobile_profileDisplayField']//android.widget.ImageButton[@resource-id='sg.com.blu.android:id/edit_btn']"));
+		WebElement MobileEditIcon=driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id='sg.com.blu.android:id/mobile_number_profileDisplayField']//android.widget.ImageButton[@resource-id='sg.com.blu.android:id/edit_btn']"));
 		MobileEditIcon.click();
 	}
 	public void clickOneditIconEmail()

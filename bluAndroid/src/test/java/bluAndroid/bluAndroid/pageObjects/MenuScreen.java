@@ -35,21 +35,31 @@ public class MenuScreen {
 		WebElement pointsRewards=driver.findElement(By.id("sg.com.blu.android:id/pointsRewardsTextView"));
 		pointsRewards.click();
 	}
-	public void settings()
+	public void clickOnSettings()
 	{
 		WebElement menu=driver.findElement(By.id("sg.com.blu.android:id/menuButton"));
 		menu.click();
 		WebElement settings=driver.findElement(By.id("sg.com.blu.android:id/settingsTextView"));
 		settings.click();
 	}
-	public void savedLocations()
+	public void clickOnSavedLocations()
 	{
 		WebElement savedLocations=driver.findElement(By.id("sg.com.blu.android:id/savedLocationsTextView"));
 		savedLocations.click();
 	}
-	public void myParcels()
+	public void clickOnMyParcels()
 	{
 		WebElement myParcels=driver.findElement(By.id("sg.com.blu.android:id/myParcelsTextView"));
 		myParcels.click();
+	}
+	public void clickOnFirstName()
+	{
+		WebElement firstName=driver.findElement(By.id("sg.com.blu.android:id/firstNameTextView"));
+		firstName.click();
+	}
+	public void clickOnAvailablePoints()
+	{
+		WebElement availablePoints=driver.findElement(By.id("sg.com.blu.android:id/availablePointsTextView"));
+		availablePoints.click();
 	}
 }

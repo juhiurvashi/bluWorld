@@ -6,6 +6,7 @@
 			<class name="bluAndroid.bluAndroid.TestScripts.BluLoginTestRunner" />
 			<class name="bluAndroid.bluAndroid.TestScripts.BluSignUpTestRunner" />
 			<class name="bluAndroid.bluAndroid.TestScripts.BluMyDetailsTestRunner" />
+			<class name="bluAndroid.bluAndroid.TestScripts.PublicProfileTestRunner" />
 		</classes>
 	</test>
 

@@ -3,16 +3,15 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [TestAll]">
   <test thread-count="5" name="order(failed)">
     <classes>
-      <class name="bluAndroid.bluAndroid.TestScripts.BluLoginTestRunner">
+      <class name="bluAndroid.bluAndroid.TestScripts.BluMyDetailsTestRunner">
         <methods>
           <include name="SetUp"/>
-          <include name="tc11_invalidMobileNumberInvalidPassword"/>
-          <include name="tc10_validMobileNumberInvalidPassword"/>
-          <include name="getResult"/>
           <include name="preCondition"/>
           <include name="tearDown"/>
+          <include name="getResult"/>
+          <include name="tc07_editMobileAlreadyExists"/>
         </methods>
-      </class> <!-- bluAndroid.bluAndroid.TestScripts.BluLoginTestRunner -->
+      </class> <!-- bluAndroid.bluAndroid.TestScripts.BluMyDetailsTestRunner -->
       <class name="bluAndroid.bluAndroid.TestScripts.BluSignUpTestRunner">
         <methods>
           <include name="SetUp"/>
